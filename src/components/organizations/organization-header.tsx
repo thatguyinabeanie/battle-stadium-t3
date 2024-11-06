@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { Organization } from "~/lib/api";
+import { type ReactNode } from "react";
+import { type Organization } from "~/lib/api";
 import OrganizationLogo from "./organization-logo";
 
 interface OrganizationHeaderProps {

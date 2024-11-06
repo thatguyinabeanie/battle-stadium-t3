@@ -1,6 +1,6 @@
 "use client";
 
-import { Profile } from "~/lib/api";
+import { type Profile } from "~/lib/api";
 import { Input } from "~/components/ui/input";
 
 

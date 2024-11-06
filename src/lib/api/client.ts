@@ -1,10 +1,10 @@
-import createFetchClient, { Middleware } from "openapi-fetch";
+import createFetchClient, { type Middleware } from "openapi-fetch";
 import { env } from "~/env.ts";
 import { getVercelOidcToken } from "@vercel/functions/oidc";
 import { auth } from "@clerk/nextjs/server";
-import { paths } from "~/lib/api/openapi-v1";
+import { type paths } from "~/lib/api/openapi-v1";
 
-export const DEFAULT_CACHE_TIMEOUT: number = 300;
+export const DEFAULT_CACHE_TIMEOUT = 300;
 
 export function defaultConfig(tag: string, revalidate?: number) {
   return {
@@ -20,7 +20,7 @@ export function getBaseUrl() {
   return `http://${env.LOCAL_DEV_BACKEND_HOST}:${env.LOCAL_DEV_BACKEND_PORT}`;
 }
 
-export async function BattleStadiumApiClient(skipClerkAuth: boolean = false) {
+export async function BattleStadiumApiClient(skipClerkAuth = false) {
   const baseUrl = `${getBaseUrl()}/api/v1`;
   const fetchClient = createFetchClient<paths>({ baseUrl });
   const authMiddleware: Middleware = {

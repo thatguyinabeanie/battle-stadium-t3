@@ -1,4 +1,4 @@
-import { ParsedTeam, PokePasteMetadata, ParsedPokemon, cleanImageUrl, parseStats } from "./common";
+import { type ParsedTeam, type PokePasteMetadata, type ParsedPokemon, cleanImageUrl, parseStats } from "./common";
 
 export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
   if (typeof window === "undefined") return { metadata: { title: "", author: "", format: "" }, pokemon: [] };

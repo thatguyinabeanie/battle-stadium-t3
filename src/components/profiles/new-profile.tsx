@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 
 import { createProfile } from "~/app/server-actions/profiles/actions";
-import { AccountMe } from "~/lib/api";
+import { type AccountMe } from "~/lib/api";
 import Form from "next/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";

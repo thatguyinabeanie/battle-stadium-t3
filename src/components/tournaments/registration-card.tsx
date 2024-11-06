@@ -1,4 +1,4 @@
-import { Profile } from "~/lib/api";
+import { type Profile } from "~/lib/api";
 
 import { postTournamentRegistration } from "~/app/server-actions/tournaments/actions";
 import Form from "next/form";

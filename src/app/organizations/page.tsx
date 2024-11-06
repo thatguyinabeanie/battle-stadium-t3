@@ -1,6 +1,6 @@
-import { Metadata } from "next";
+import { type Metadata } from "next";
 
-import { Tournament } from "~/lib/api";
+import { type Tournament } from "~/lib/api";
 import PartneredOrganizations from "~/components/organizations/partnered-organizations";
 
 

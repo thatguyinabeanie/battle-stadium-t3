@@ -1,7 +1,7 @@
 import { getTournament, getTournaments } from "~/app/server-actions/tournaments/actions";
 
 import OrganizationHeader from "~/components/organizations/organization-header";
-import { OrganizationTournamentProps } from "~/types";
+import { type OrganizationTournamentProps } from "~/types";
 
 import Link from "next/link";
 import Chip from "~/components/ui/chip";

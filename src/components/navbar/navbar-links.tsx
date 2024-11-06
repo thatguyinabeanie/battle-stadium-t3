@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { ChildrenProps } from "~/types";
+import { type ChildrenProps } from "~/types";
 import { cn } from "~/lib/utils";
 import { NavigationMenuItem } from "../ui/navigation-menu";
 import { NavbarItemsConfigs } from "~/config/site";
