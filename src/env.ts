@@ -38,7 +38,6 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
   },
 
@@ -77,4 +76,8 @@ export const env = createEnv({
    * `SOME_VAR=''` will throw an error.
    */
   emptyStringAsUndefined: true,
+
+  onInvalidAccess: (error) => {
+    throw new Error(`❌ Attempted to access a server-side environment variable on the client: ${error}`);
+  },
 });
