@@ -1,10 +1,10 @@
 import "~/styles/globals.css";
 
 import { StrictMode } from "react";
-import { Viewport } from "next";
+import { type Viewport } from "next";
 import { type Metadata } from "next";
 
-import { AppProps } from "next/app";
+import { type AppProps } from "next/app";
 import { siteConfig } from "~/config/site";
 import { GeistSans } from "geist/font/sans";
 import dynamic from "next/dynamic";
@@ -13,7 +13,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 
 import ThemeProvider from "../components/theme-provider";
-import { ChildrenProps } from "~/types";
+import { type ChildrenProps } from "~/types";
 import Footer from "~/components/footer";
 import { TRPCReactProvider } from "~/trpc/react";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";

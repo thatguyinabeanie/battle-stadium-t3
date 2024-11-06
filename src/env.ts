@@ -18,6 +18,18 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     UPLOADTHING_TOKEN: z.string().optional(),
+    VERCEL_URL: z.string().optional(),
+    VERCEL_ENV: z.string().optional(),
+    VERCEL_OIDC_TOKEN: z.string().optional(),
+    COOKIE_DOMAIN: z.string().optional(),
+    MEASUREMENT_ID: z.string().optional().default("G-XXXXXXXXXX"),
+    PROD_API_BASE_URL: z.string().optional(),
+    WEBSOCKET_URL: z.string().optional(),
+    CLERK_SECRET_KEY: z.string(),
+    CLERK_SIGN_IN_URL: z.string().optional().default("/sign-in"),
+    CLERK_SIGN_UP_URL: z.string().optional().default("/sign-up"),
+    LOCAL_DEV_BACKEND_HOST: z.string().optional().default("localhost"),
+    LOCAL_DEV_BACKEND_PORT: z.string().optional().default("10000"),
   },
 
   /**
@@ -42,6 +54,18 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     UPLOADTHING_TOKEN: process.env.UPLOADTHING_TOKEN,
+    VERCEL_URL: process.env.VERCEL_URL,
+    VERCEL_ENV: process.env.VERCEL_ENV,
+    VERCEL_OIDC_TOKEN: process.env.VERCEL_OIDC_TOKEN,
+    COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
+    MEASUREMENT_ID: process.env.MEASUREMENT_ID,
+    PROD_API_BASE_URL: process.env.PROD_API_BASE_URL,
+    WEBSOCKET_URL: process.env.WEBSOCKET_URL,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    CLERK_SIGN_IN_URL: process.env.CLERK_SIGN_IN_URL,
+    CLERK_SIGN_UP_URL: process.env.CLERK_SIGN_UP_URL,
+    LOCAL_DEV_BACKEND_HOST: process.env.LOCAL_DEV_BACKEND_HOST,
+    LOCAL_DEV_BACKEND_PORT: process.env.LOCAL_DEV_BACKEND_PORT,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

@@ -19,7 +19,9 @@
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "generate:api": "openapi-typescript ../backend/openapi/v1/openapi.yaml  -o ./src/lib/api/openapi-v1.d.ts && pnpm run lint:fix && pnpm run format:write",
+    "vercel:pull": "vercel env pull .env.development.local"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.7.3",
@@ -30,6 +32,8 @@
     "@iconify/react": "^5.0.2",
     "@neondatabase/serverless": "^0.10.3",
     "@next/third-parties": "^15.0.2",
+    "@pkmn/sets": "^5.1.2",
+    "@pkmn/types": "^4.0.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.2",
@@ -76,6 +80,7 @@
     "server-only": "^0.0.1",
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.5.4",
+    "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7",
     "tweetnacl": "^1.0.3",
     "uploadthing": "^7.2.0",
@@ -99,6 +104,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "openapi-typescript": "^7.4.2",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
