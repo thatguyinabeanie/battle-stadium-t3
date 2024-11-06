@@ -25,7 +25,9 @@ export async function getProfilesByAccountId(id: number, options?: FetchOptions<
     },
   };
 
-  return (await BattleStadiumApiClient()).GET("/profiles", profileOptions);
+  const profiles = (await (await BattleStadiumApiClient()).GET("/profiles", profileOptions)).data ?? [];
+
+  return profiles;
 }
 
 export async function createProfile(

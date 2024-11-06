@@ -1,42 +1,19 @@
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
+import { auth } from "@clerk/nextjs/server";
+import { NavigationMenu,  NavigationMenuList } from "../ui/navigation-menu";
+import { getAccountMe } from "~/app/server-actions/accounts/actions";
+import NavbarLinks from "./navbar-links";
 
 
-export default function Navbar() {
+export default async function Navbar() {
+  const clerkAuth = await auth();
+  const me = (await getAccountMe())?.data;
+
   return (
     <NavigationMenu>
       <NavigationMenuList className="space-x-6">
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className="text-sm font-medium transition-colors hover:text-primary"
-            href="/"
-          >
-            Home
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className="text-sm font-medium transition-colors hover:text-primary"
-            href="/about"
-          >
-            About
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className="text-sm font-medium transition-colors hover:text-primary"
-            href="/services"
-          >
-            Services
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className="text-sm font-medium transition-colors hover:text-primary"
-            href="/contact"
-          >
-            Contact
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+
+      <NavbarLinks isSignedIn={!!clerkAuth.sessionId} />
+
       </NavigationMenuList>
     </NavigationMenu>
   )
