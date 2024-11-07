@@ -27,11 +27,9 @@ const Navbar = () => {
 
       if (currentScrollY < scrollThreshold) {
         setIsVisible(true);
-      }
-      else if (currentScrollY > lastScrollY) {
+      } else if (currentScrollY > lastScrollY) {
         setIsVisible(false);
-      }
-      else {
+      } else {
         setIsVisible(true);
       }
 
@@ -43,39 +41,41 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <div className={ cn(
-      "sticky top-0 transform transition-transform duration-300 z-50 bg-background",
-      !isVisible && "-translate-y-full"
-    ) }>
-      <nav className="flex w-full border-b">
+    <div
+      className={cn(
+        "sticky top-0 z-40 transform transition-transform duration-300",
+        !isVisible && "-translate-y-full",
+      )}
+    >
+      <nav className="relative flex w-full border-b bg-background">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
-            {/* Logo */ }
+            {/* Logo */}
             <Link href="/" className="text-xl font-bold">
               Logo
             </Link>
 
-            {/* Desktop Navigation */ }
+            {/* Desktop Navigation */}
             <div className="hidden space-x-4 md:flex">
-              { navItems.map((item) => (
+              {navItems.map((item) => (
                 <Link
-                  key={ item.href }
-                  href={ item.href }
-                  className={ cn(
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
                     "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     pathname === item.href
                       ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-                  ) }
+                  )}
                 >
-                  { item.name }
+                  {item.name}
                 </Link>
-              )) }
+              ))}
             </div>
 
-            {/* Mobile Menu Button */ }
+            {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <Sheet open={ isMobileMenuOpen } onOpenChange={ setIsMobileMenuOpen }>
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
                     <Menu className="h-6 w-6" />
@@ -83,21 +83,21 @@ const Navbar = () => {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[240px] sm:w-[300px]">
                   <div className="mt-6 flex flex-col space-y-4">
-                    { navItems.map((item) => (
+                    {navItems.map((item) => (
                       <Link
-                        key={ item.href }
-                        href={ item.href }
-                        onClick={ () => setIsMobileMenuOpen(false) }
-                        className={ cn(
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={cn(
                           "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                           pathname === item.href
                             ? "bg-primary/10 text-primary"
                             : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-                        ) }
+                        )}
                       >
-                        { item.name }
+                        {item.name}
                       </Link>
-                    )) }
+                    ))}
                   </div>
                 </SheetContent>
               </Sheet>
