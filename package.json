@@ -21,7 +21,7 @@
     "preview": "next build && next start",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "generate:api": "openapi-typescript ../backend/openapi/v1/openapi.yaml  -o ./src/lib/api/openapi-v1.d.ts && pnpm run lint:fix && pnpm run format:write",
+    "generate:api": "openapi-typescript ../backend/openapi/v1/openapi.yaml  -o ./src/lib/api/openapi-v1.d.ts && pnpm fix",
     "vercel:pull": "vercel env pull .env.development.local"
   },
   "dependencies": {
