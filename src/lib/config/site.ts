@@ -5,30 +5,26 @@ export const siteConfig = {
 };
 
 interface NavbarItemConfig {
-  key: string;
+  value: string;
   label: string;
 }
 
 export const NavbarItemsConfigs: NavbarItemConfig[] = [
   {
-    key: "organizations",
+    value: "organizations",
     label: "Organizations",
   },
   {
-    key: "tournaments",
+    value: "tournaments",
     label: "Tournaments",
   },
   {
-    key: "players",
+    value: "players",
     label: "Players",
   },
   {
-    key: "analytics",
+    value: "analytics",
     label: "Analytics",
-  },
-  {
-    key: "dashboard",
-    label: "Dashboard",
   },
 ];
 

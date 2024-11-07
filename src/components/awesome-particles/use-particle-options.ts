@@ -17,7 +17,7 @@ export default function useParticlesOptions(): ISourceOptions {
     interactivity: {
       events: {
         onClick: {
-          enable: false,
+          enable: true,
           mode: "push",
         },
         onHover: {
