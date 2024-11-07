@@ -23,6 +23,8 @@ import { extractRouterConfig } from "uploadthing/server";
 import { UploadThingRouter } from "~/app/api/uploadthing/core";
 import { env } from "~/env.ts";
 import Navbar from "~/components/navbar/navbar";
+import { Toast } from "~/components/ui/toast";
+import { Toaster } from "~/components/ui/sonner";
 const AwesomeParticles = dynamic(
   () => import("~/components/awesome-particles"),
 );
@@ -86,7 +88,9 @@ export default async function RootLayout({
                         {children}
                       </section>
                     </main>
-
+                    {/* <div className="position-absolute bottom-0 right-0">
+                      <Toaster />
+                    </div> */}
                     <Footer />
                   </div>
                 </div>

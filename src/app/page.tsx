@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import { title } from "~/lib/tailwind-variants/titles";
 
 export const metadata: Metadata = {
@@ -13,7 +12,6 @@ export default function Home() {
         <h1 className={title({ color: "violet", size: "xl" })}>
           battlestadium.gg
         </h1>
-
         <h2 className={`${title({ size: "xs" })} pt-2`}>
           a next-gen tournament website.
         </h2>
