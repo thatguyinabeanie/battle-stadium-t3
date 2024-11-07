@@ -22,7 +22,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { UploadThingRouter } from "~/app/api/uploadthing/core";
 import { env } from "~/env.ts";
-import Navbar from "~/components/navbar/navbar-claude";
+import Navbar from "~/components/navbar/navbar";
 const AwesomeParticles = dynamic(
   () => import("~/components/awesome-particles"),
 );
@@ -58,7 +58,7 @@ export default async function RootLayout({
     <StrictMode>
       <ClerkProvider>
         <html
-          // suppressHydrationWarning
+          suppressHydrationWarning
           lang="en"
           className={`${GeistSans.variable}`}
         >

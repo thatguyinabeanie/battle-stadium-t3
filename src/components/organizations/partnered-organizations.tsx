@@ -5,7 +5,7 @@ export default async function PartneredOrganizations() {
   const { partners } = await getOrganizations();
 
   return (
-    <div className="flex h-full w-full flex-row items-center justify-center overflow-y-hidden overflow-x-scroll bg-transparent">
+    <div className="flex h-full w-full flex-row items-center justify-center bg-transparent">
       {partners.map((organization) => (
         <OrganizationCard
           key={organization.id}

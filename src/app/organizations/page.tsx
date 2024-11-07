@@ -14,8 +14,6 @@ export interface OrganizationsPageProps {
 export default async function OrganizationsPage() {
   return (
     <>
-      <div className="pt-2" />
-
       <PartneredOrganizations />
 
       <div>
