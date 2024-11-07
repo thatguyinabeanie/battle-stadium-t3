@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -24,17 +23,14 @@ const Navbar = () => {
   useEffect(() => {
     const controlNavbar = () => {
       const currentScrollY = window.scrollY;
-      const scrollThreshold = 100; // Reduced from 200 to make it more noticeable
+      const scrollThreshold = 100;
 
-      // Show navbar at the top
       if (currentScrollY < scrollThreshold) {
         setIsVisible(true);
       }
-      // When scrolling down, hide the navbar
       else if (currentScrollY > lastScrollY) {
         setIsVisible(false);
       }
-      // When scrolling up, show the navbar
       else {
         setIsVisible(true);
       }
@@ -48,10 +44,10 @@ const Navbar = () => {
 
   return (
     <div className={ cn(
-      "sticky top-0 transform transition-transform duration-300",
+      "sticky top-0 transform transition-transform duration-300 z-50 bg-background",
       !isVisible && "-translate-y-full"
     ) }>
-      <nav className="flex w-full z-50 border-b bg-background">
+      <nav className="flex w-full border-b">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */ }
