@@ -88,7 +88,6 @@ export default function CookiesComponent({ isSignedIn, userId }: Readonly<Cookie
             // radius="lg"
             style={{
               border: "solid 2px transparent",
-              backgroundImage: `linear-gradient(hsl(var(--nextui-background)), hsl(var(--nextui-background))), linear-gradient(83.87deg, #F54180, #9353D3)`,
               backgroundOrigin: "border-box",
               backgroundClip: "padding-box, border-box",
             }}

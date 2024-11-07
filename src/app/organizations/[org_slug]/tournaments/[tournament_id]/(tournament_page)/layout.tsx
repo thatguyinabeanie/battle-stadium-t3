@@ -2,9 +2,6 @@
 
 import { type ReactNode } from "react";
 
-// import Tabs from "~/components/nextui/tabs";
-
-
 // const tabs = [
 //   { key: "details", title: "Details" },
 //   { key: "registrations", title: "Registrations" },
