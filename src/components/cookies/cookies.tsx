@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { Button } from "./ui/button";
+import { Button } from "~/components/ui/button";
 import Link from "next/link";
 
 const cookieAttributes = (

@@ -4,7 +4,7 @@ import { StrictMode } from "react";
 import type { Metadata, Viewport } from "next";
 
 import { type AppProps } from "next/app";
-import { siteConfig } from "~/config/site";
+import { siteConfig } from "~/lib/config/site";
 import { GeistSans } from "geist/font/sans";
 import dynamic from "next/dynamic";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
@@ -26,7 +26,7 @@ import Navbar from "~/components/navbar/navbar";
 const AwesomeParticles = dynamic(
   () => import("~/components/awesome-particles"),
 );
-const Cookies = dynamic(() => import("~/components/cookies"));
+const Cookies = dynamic(() => import("~/components/cookies/cookies"));
 
 export const metadata: Metadata = {
   title: {

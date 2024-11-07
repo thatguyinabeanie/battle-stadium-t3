@@ -6,7 +6,7 @@ import Link from "next/link";
 import { type ChildrenProps } from "~/types";
 import { cn } from "~/lib/utils";
 import { NavigationMenuItem } from "../ui/navigation-menu";
-import { NavbarItemsConfigs } from "~/config/site";
+import { NavbarItemsConfigs } from "~/lib/config/site";
 
 interface NavbarLinksProps {
   isSignedIn: boolean | null;
