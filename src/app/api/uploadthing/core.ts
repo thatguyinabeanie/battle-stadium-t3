@@ -15,7 +15,7 @@ export const UploadThingRouter = {
 
       // If you throw, the user will not be able to upload
       if (!userId) {
-        throw new UploadThingError("Unauthorized");
+        throw new Error((new UploadThingError("Unauthorized")).message);
       }
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
