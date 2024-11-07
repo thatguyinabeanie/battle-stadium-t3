@@ -4,7 +4,9 @@ import { BattleStadiumApiClient, defaultConfig } from "~/lib/api";
 import { type paths } from "~/lib/api/openapi-v1";
 import { type FetchOptions } from "openapi-fetch";
 
-export async function getOrganizations(options?: FetchOptions<paths["/organizations"]["get"]>) {
+export async function getOrganizations(
+  options?: FetchOptions<paths["/organizations"]["get"]>,
+) {
   const organizationsOptions = {
     ...defaultConfig("getOrganizations"),
     ...options,
@@ -17,7 +19,9 @@ export async function getOrganizations(options?: FetchOptions<paths["/organizati
   };
   const skipClerkAuth = true;
 
-  const resp = await (await BattleStadiumApiClient(skipClerkAuth)).GET("/organizations", organizationsOptions);
+  const resp = await (
+    await BattleStadiumApiClient(skipClerkAuth)
+  ).GET("/organizations", organizationsOptions);
   const allOrgs = resp.data?.data;
   const partnerOrgs = (allOrgs ?? [])?.filter((org) => org.partner);
   const nonPartnerOrgs = (allOrgs ?? [])?.filter((org) => !org.partner);
@@ -28,12 +32,18 @@ export async function getOrganizations(options?: FetchOptions<paths["/organizati
   };
 }
 
-export async function getOrganization(slug: string, options?: FetchOptions<paths["/organizations/{slug}"]["get"]>) {
+export async function getOrganization(
+  slug: string,
+  options?: FetchOptions<paths["/organizations/{slug}"]["get"]>,
+) {
   const organizationOptions = {
     ...defaultConfig(`getOrganization(${slug})`),
     ...options,
     params: { path: { slug } },
   };
 
-  return (await BattleStadiumApiClient()).GET("/organizations/{slug}", organizationOptions);
+  return (await BattleStadiumApiClient()).GET(
+    "/organizations/{slug}",
+    organizationOptions,
+  );
 }

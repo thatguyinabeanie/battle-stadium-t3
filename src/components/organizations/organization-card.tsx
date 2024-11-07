@@ -11,10 +11,16 @@ export interface OrgCardProps {
 
 const LOGO_SIZE = 200;
 
-export default function OrganizationCard({ organization, disableHover }: Readonly<OrgCardProps>) {
+export default function OrganizationCard({
+  organization,
+  disableHover,
+}: Readonly<OrgCardProps>) {
   return (
-    <div className="bg-transparent relative px-2 border-none rounded-lg">
-      <Link key={organization.slug} href={`/organizations/${organization.slug}`}>
+    <div className="relative rounded-lg border-none bg-transparent px-2">
+      <Link
+        key={organization.slug}
+        href={`/organizations/${organization.slug}`}
+      >
         <div className="flex flex-col overflow-hidden p-2">
           <OrganizationLogo
             priority

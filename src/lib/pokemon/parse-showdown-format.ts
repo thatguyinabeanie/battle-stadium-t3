@@ -1,4 +1,8 @@
-import { convertToParsedPokemon, type ParsedPokemon, type ParsedTeam } from "./common";
+import {
+  convertToParsedPokemon,
+  type ParsedPokemon,
+  type ParsedTeam,
+} from "./common";
 import { Sets } from "@pkmn/sets";
 
 export function parseShowdownFormat(input: string): ParsedTeam {

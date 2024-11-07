@@ -41,13 +41,21 @@ export default async function Tournaments() {
   const tours = (await getTournaments()).data?.data ?? [];
 
   const rightNow = new Date();
-  const pastTours = tours.filter((tour) => tour.start_at && new Date(tour.start_at) < rightNow);
-  const upcomingTours = tours.filter((tour) => tour.start_at && new Date(tour.start_at) >= rightNow);
+  const pastTours = tours.filter(
+    (tour) => tour.start_at && new Date(tour.start_at) < rightNow,
+  );
+  const upcomingTours = tours.filter(
+    (tour) => tour.start_at && new Date(tour.start_at) >= rightNow,
+  );
+
+  console.log("columns", columns); // eslint-disable-line no-console
+  console.log("pastTours", pastTours); // eslint-disable-line no-console
+  console.log("upcomingTours", upcomingTours); // eslint-disable-line no-console
 
   // return <TournamentsTable columns={columns} data={[...pastTours, ...upcomingTours]} />;
   return (
     <div>
       <h2>TODO: tournaments table</h2>
     </div>
-  )
+  );
 }

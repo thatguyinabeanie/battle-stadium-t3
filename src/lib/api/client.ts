@@ -26,11 +26,17 @@ export async function BattleStadiumApiClient(skipClerkAuth = false) {
   const authMiddleware: Middleware = {
     async onRequest({ request }) {
       if (env.NODE_ENV !== "development") {
-        request.headers.set("X-Vercel-OIDC-Token", `${await getVercelOidcToken()}`);
+        request.headers.set(
+          "X-Vercel-OIDC-Token",
+          `${await getVercelOidcToken()}`,
+        );
       }
 
       if (!skipClerkAuth) {
-        request.headers.set("Authorization", `Bearer ${await (await auth()).getToken()}`);
+        request.headers.set(
+          "Authorization",
+          `Bearer ${await (await auth()).getToken()}`,
+        );
       }
 
       return request;

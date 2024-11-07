@@ -1,5 +1,8 @@
 // import TournamentsTable from "~/components/tournaments-table";
-import { getOrganization, getOrganizations } from "~/app/server-actions/organizations/actions";
+import {
+  getOrganization,
+  getOrganizations,
+} from "~/app/server-actions/organizations/actions";
 import { getOrganizationTournaments } from "~/app/server-actions/organizations/tournaments/actions";
 
 import OrganizationHeader from "~/components/organizations/organization-header";
@@ -11,7 +14,9 @@ interface OrganizationDetailPageProps {
   params: Promise<{ org_slug: string }>;
 }
 
-export async function generateMetadata(props: Readonly<OrganizationDetailPageProps>) {
+export async function generateMetadata(
+  props: Readonly<OrganizationDetailPageProps>,
+) {
   const params = await props.params;
   const { data: org } = await getOrganization(params.org_slug);
 
@@ -52,7 +57,9 @@ export async function generateStaticParams() {
 //   },
 // ];
 
-export default async function OrganizationDetailPage(props: Readonly<OrganizationDetailPageProps>) {
+export default async function OrganizationDetailPage(
+  props: Readonly<OrganizationDetailPageProps>,
+) {
   const params = await props.params;
   const { data: organization } = await getOrganization(params.org_slug);
 
@@ -65,7 +72,7 @@ export default async function OrganizationDetailPage(props: Readonly<Organizatio
   return (
     <>
       <OrganizationHeader organization={organization}>
-        <div className="flex flex-col justify-between h-full w-full items-center text-center mx-4 py-2">
+        <div className="mx-4 flex h-full w-full flex-col items-center justify-between py-2 text-center">
           <h1 className="text-2xl font-semibold">{organization?.name}</h1>
           <p>{organization?.description}</p>
         </div>
@@ -73,14 +80,12 @@ export default async function OrganizationDetailPage(props: Readonly<Organizatio
 
       <div>
         <h2>TODO: tournament table</h2>
-        {
-          tournaments.map((tournament) => (
-            <div key={tournament.id}>
-              <h3>{tournament.name}</h3>
-              <p>{tournament.start_at}</p>
-            </div>
-          ))
-        }
+        {tournaments.map((tournament) => (
+          <div key={tournament.id}>
+            <h3>{tournament.name}</h3>
+            <p>{tournament.start_at}</p>
+          </div>
+        ))}
       </div>
       {/* <Divider /> */}
 

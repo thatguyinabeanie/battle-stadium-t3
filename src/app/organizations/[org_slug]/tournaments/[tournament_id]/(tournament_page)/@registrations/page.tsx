@@ -13,7 +13,9 @@ import { type OrganizationTournamentProps } from "~/types";
 //   },
 // ];
 
-export default async function TournamentRegistrations(props: Readonly<OrganizationTournamentProps>) {
+export default async function TournamentRegistrations(
+  props: Readonly<OrganizationTournamentProps>,
+) {
   const params = await props.params;
   const { tournament_id } = params;
 
@@ -22,14 +24,11 @@ export default async function TournamentRegistrations(props: Readonly<Organizati
   return (
     <div>
       <h2>TODO: Registrations</h2>
-      {
-        players?.map((player) => (
-          <div key={player.id}>
-            <h3>{player.profile.username}</h3>
-          </div>
-        ))
-
-      }
+      {players?.map((player) => (
+        <div key={player.id}>
+          <h3>{player.profile.username}</h3>
+        </div>
+      ))}
     </div>
     // <PlayersTable columns={columns} players={players?.map((p) => p.profile) ?? []} />
   );

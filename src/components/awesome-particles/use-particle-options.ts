@@ -3,7 +3,7 @@
 import { type ISourceOptions, MoveDirection } from "@tsparticles/engine";
 import { useTheme } from "next-themes";
 
-export default function useParticlesOptions (): ISourceOptions {
+export default function useParticlesOptions(): ISourceOptions {
   const { theme } = useTheme();
 
   const isLight = theme?.includes("light");
@@ -73,4 +73,4 @@ export default function useParticlesOptions (): ISourceOptions {
     detectRetina: true,
     smooth: true,
   };
-};
+}

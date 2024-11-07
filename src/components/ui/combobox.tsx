@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from "~/lib/utils"
-import { Button } from "~/components/ui/button"
+import { cn } from "~/lib/utils";
+import { Button } from "~/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -12,12 +12,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "~/components/ui/command"
+} from "~/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "~/components/ui/popover"
+} from "~/components/ui/popover";
 
 const frameworks = [
   {
@@ -40,24 +40,24 @@ const frameworks = [
     value: "astro",
     label: "Astro",
   },
-]
+];
 
-export function ComboboxDemo () {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+export function ComboboxDemo() {
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState("");
 
   return (
-    <Popover open={ open } onOpenChange={ setOpen }>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           role="combobox"
-          aria-expanded={ open }
+          aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          { value
+          {value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..." }
+            : "Select framework..."}
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -67,28 +67,28 @@ export function ComboboxDemo () {
           <CommandList>
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup>
-              { frameworks.map((framework) => (
+              {frameworks.map((framework) => (
                 <CommandItem
-                  key={ framework.value }
-                  value={ framework.value }
-                  onSelect={ (currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  } }
+                  key={framework.value}
+                  value={framework.value}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setOpen(false);
+                  }}
                 >
-                  { framework.label }
+                  {framework.label}
                   <Check
-                    className={ cn(
+                    className={cn(
                       "ml-auto",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    ) }
+                      value === framework.value ? "opacity-100" : "opacity-0",
+                    )}
                   />
                 </CommandItem>
-              )) }
+              ))}
             </CommandGroup>
           </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

@@ -5,7 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import useParticleOptions from "./use-particle-options";
 
-export default function AwesomeParticles () {
+export default function AwesomeParticles() {
   const [init, setInit] = useState(false);
 
   const options = useParticleOptions();
@@ -20,5 +20,5 @@ export default function AwesomeParticles () {
     return <></>;
   }
 
-  return <Particles id="tsparticles" options = { options } />;
+  return <Particles id="tsparticles" options={options} />;
 }

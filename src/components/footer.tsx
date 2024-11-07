@@ -1,6 +1,5 @@
 import type { IconProps } from "@iconify/react";
 
-
 import Link from "next/link";
 
 import { Icon } from "@iconify/react";
@@ -31,18 +30,22 @@ const socialItems = [
   {
     name: "Twitter",
     href: "https://x.com/thatguyinabeani",
-    icon: (props: SocialIconProps) => <Icon {...props} icon="fontisto:twitter" />,
+    icon: (props: SocialIconProps) => (
+      <Icon {...props} icon="fontisto:twitter" />
+    ),
   },
   {
     name: "GitHub",
     href: "https://github.com/thatguyinabeanie/battle-stadium/",
-    icon: (props: SocialIconProps) => <Icon {...props} icon="fontisto:github" />,
+    icon: (props: SocialIconProps) => (
+      <Icon {...props} icon="fontisto:github" />
+    ),
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-center py-8">
+    <footer className="flex flex-col items-center justify-center py-8">
       <div className="flex flex-col items-center justify-center">
         <div className="flex items-center justify-center">
           <BattleStadium />
@@ -67,7 +70,9 @@ export default function Footer() {
           ))}
         </div>
         {/* <Spacer y={4} /> */}
-        <p className="mt-1 text-center text-small text-default-400">&copy; 2024 Beanie LLC Inc. All rights reserved.</p>
+        <p className="text-small text-default-400 mt-1 text-center">
+          &copy; 2024 Beanie LLC Inc. All rights reserved.
+        </p>
       </div>
     </footer>
   );

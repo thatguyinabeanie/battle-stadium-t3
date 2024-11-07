@@ -6,7 +6,8 @@ import { PokemonShowdownSetForm } from "./pokemon-showdown-set-form";
 import { PokemonTeamDisplayGrid } from "./pokemon-team-display-grid";
 
 export default function PokemonTeamDisplay() {
-  const { validatedTeam, metaData, loading, error, handleSubmit } = usePokemonTeam();
+  const { validatedTeam, metaData, loading, error, handleSubmit } =
+    usePokemonTeam();
   const [input, setInput] = useState<string>("");
 
   return (
@@ -23,7 +24,12 @@ export default function PokemonTeamDisplay() {
         {loading && <div className="text-center">Loading...</div>}
         {error && <p className="text-danger">Error: {error.message}</p>}
 
-        {!loading && validatedTeam && <PokemonTeamDisplayGrid metaData={metaData} validatedTeam={validatedTeam} />}
+        {!loading && validatedTeam && (
+          <PokemonTeamDisplayGrid
+            metaData={metaData}
+            validatedTeam={validatedTeam}
+          />
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,9 @@ import { type paths } from "~/lib/api/openapi-v1";
 import { revalidateTag } from "next/cache";
 import { type FetchOptions } from "openapi-fetch";
 
-export async function getProfiles(options?: FetchOptions<paths["/profiles"]["get"]>) {
+export async function getProfiles(
+  options?: FetchOptions<paths["/profiles"]["get"]>,
+) {
   const profilesOptions = {
     ...defaultConfig("getPlayerProfiles"),
     ...options,
@@ -14,7 +16,10 @@ export async function getProfiles(options?: FetchOptions<paths["/profiles"]["get
   return (await BattleStadiumApiClient()).GET("/profiles", profilesOptions);
 }
 
-export async function getProfilesByAccountId(id: number, options?: FetchOptions<paths["/profiles"]["get"]>) {
+export async function getProfilesByAccountId(
+  id: number,
+  options?: FetchOptions<paths["/profiles"]["get"]>,
+) {
   const profileOptions = {
     ...defaultConfig(`getPlayerProfileByAccountId-${id}`),
     ...options,
@@ -25,7 +30,9 @@ export async function getProfilesByAccountId(id: number, options?: FetchOptions<
     },
   };
 
-  const profiles = (await (await BattleStadiumApiClient()).GET("/profiles", profileOptions)).data ?? [];
+  const profiles =
+    (await (await BattleStadiumApiClient()).GET("/profiles", profileOptions))
+      .data ?? [];
 
   return profiles;
 }
@@ -45,7 +52,9 @@ export async function createProfile(
     },
   };
 
-  const resp = (await (await BattleStadiumApiClient()).POST("/profiles", profileOptions)).data;
+  const resp = (
+    await (await BattleStadiumApiClient()).POST("/profiles", profileOptions)
+  ).data;
 
   revalidateTag(`getPlayerProfileByAccountId-${accountId}`);
 

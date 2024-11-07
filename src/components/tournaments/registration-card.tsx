@@ -12,22 +12,32 @@ interface RegistrationCardProps {
   profiles: Profile[];
 }
 
-export default function RegistrationCard({ profiles, org_slug, tournament_id }: Readonly<RegistrationCardProps>) {
+export default function RegistrationCard({
+  profiles,
+  org_slug,
+  tournament_id,
+}: Readonly<RegistrationCardProps>) {
   const registerForTournament = async (formData: FormData) => {
     "use server";
     const in_game_name = formData.get("ign") as string;
     const profile = formData.get("profile") as string;
-    const show_country_flag = (formData.get("country_flag") as string) === "true";
+    const show_country_flag =
+      (formData.get("country_flag") as string) === "true";
 
     const profile_id = profiles.find((p) => p.username == profile)?.id;
 
     if (profile_id) {
-      await postTournamentRegistration({ tournament_id, in_game_name, profile_id, show_country_flag });
+      await postTournamentRegistration({
+        tournament_id,
+        in_game_name,
+        profile_id,
+        show_country_flag,
+      });
     }
   };
 
   return (
-    <div className="bg-transparent inline-block max-w-fit text-center justify-center p-10 m-20 backdrop-blur rounded-3xl border-small border-neutral-500/40">
+    <div className="border-small m-20 inline-block max-w-fit justify-center rounded-3xl border-neutral-500/40 bg-transparent p-10 text-center backdrop-blur">
       <div>
         Register for {org_slug} tournament {tournament_id}
       </div>

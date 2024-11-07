@@ -21,11 +21,8 @@ export default async function OpenApiDocs() {
   // const jsonSpec = '{"openapi": "3.0.1"}';
 
   return (
-    <div
-      className="bg-transparent h-90 w-90 rounded-3xl
-    backdrop-blur"
-    >
-      <div className="flex flex-row justify-between rounded-3xl p-10 ">
+    <div className="h-90 w-90 rounded-3xl bg-transparent backdrop-blur">
+      <div className="flex flex-row justify-between rounded-3xl p-10">
         <h2>TODO: Swagger DOCS</h2>
         {/* <SwaggerUI displayOperationId={true} spec={jsonSpec} /> */}
       </div>

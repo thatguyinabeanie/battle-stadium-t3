@@ -1,11 +1,11 @@
-import React from 'react';
-import { X } from 'lucide-react';
-import { cn } from '~/lib/utils';
+import React from "react";
+import { X } from "lucide-react";
+import { cn } from "~/lib/utils";
 
 // Type definitions
-type ChipVariant = 'solid' | 'bordered' | 'light' | 'flat';
-type ChipSize = 'sm' | 'md' | 'lg';
-type ChipRadius = 'full' | 'lg' | 'md' | 'sm';
+type ChipVariant = "solid" | "bordered" | "light" | "flat";
+type ChipSize = "sm" | "md" | "lg";
+type ChipRadius = "full" | "lg" | "md" | "sm";
 
 export interface ChipProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: ChipVariant;
@@ -29,62 +29,66 @@ const ChipSizes: Record<ChipSize, string> = {
   lg: "text-base px-4 py-1.5 h-8",
 };
 
-const Chip = React.forwardRef<HTMLDivElement, ChipProps>(({
-  children,
-  variant = "solid",
-  size = "md",
-  radius = "full",
-  onClose,
-  className,
-  ...props
-}, ref) => {
-  const baseStyles = cn(
-    // Base styles
-    "inline-flex items-center justify-center gap-1",
-    "font-medium transition-colors",
-    "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-    "cursor-default select-none",
+const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
+  (
+    {
+      children,
+      variant = "solid",
+      size = "md",
+      radius = "full",
+      onClose,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const baseStyles = cn(
+      // Base styles
+      "inline-flex items-center justify-center gap-1",
+      "font-medium transition-colors",
+      "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+      "cursor-default select-none",
 
-    // Variant styles
-    ChipVariants[variant],
+      // Variant styles
+      ChipVariants[variant],
 
-    // Size styles
-    ChipSizes[size],
+      // Size styles
+      ChipSizes[size],
 
-    // Radius styles
-    radius === "full" ? "rounded-full" :
-      radius === "lg" ? "rounded-lg" :
-        radius === "md" ? "rounded-md" :
-          "rounded-sm",
+      // Radius styles
+      radius === "full"
+        ? "rounded-full"
+        : radius === "lg"
+          ? "rounded-lg"
+          : radius === "md"
+            ? "rounded-md"
+            : "rounded-sm",
 
-    // Disabled state
-    "disabled:opacity-50 disabled:pointer-events-none",
+      // Disabled state
+      "disabled:opacity-50 disabled:pointer-events-none",
 
-    className
-  );
+      className,
+    );
 
-  return (
-    <div
-      ref={ ref }
-      className={ baseStyles }
-      { ...props }
-    >
-      { children }
-      { onClose && (
-        <button
-          onClick={ (e: React.MouseEvent<HTMLButtonElement>) => {
-            e.stopPropagation();
-            onClose(e);
-          } }
-          className="inline-flex items-center justify-center rounded-full hover:bg-black/20 focus:outline-none focus:ring-2 focus:ring-ring"
-          style={ { padding: size === 'sm' ? '2px' : '4px' } }
-        >
-          <X size={ size === 'sm' ? 14 : size === 'md' ? 16 : 18 } />
-        </button>
-      ) }
-    </div>
-  );
-});
+    return (
+      <div ref={ref} className={baseStyles} {...props}>
+        {children}
+        {onClose && (
+          <button
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              e.stopPropagation();
+              onClose(e);
+            }}
+            className="inline-flex items-center justify-center rounded-full hover:bg-black/20 focus:outline-none focus:ring-2 focus:ring-ring"
+            style={{ padding: size === "sm" ? "2px" : "4px" }}
+          >
+            <X size={size === "sm" ? 14 : size === "md" ? 16 : 18} />
+          </button>
+        )}
+      </div>
+    );
+  },
+);
 
 Chip.displayName = "Chip";
 

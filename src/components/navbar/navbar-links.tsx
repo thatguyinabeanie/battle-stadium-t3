@@ -12,29 +12,25 @@ interface NavbarLinksProps {
   isSignedIn: boolean | null;
 }
 
-export default function NavbarLinks ({ isSignedIn }: Readonly<NavbarLinksProps>) {
+export default function NavbarLinks({
+  isSignedIn,
+}: Readonly<NavbarLinksProps>) {
   const pathname = usePathname();
   const firstSegment = pathname?.split("/")[1];
 
   return (
     <>
-    {
-        NavbarItemsConfigs.map(({ key, label }) => (
-          <NavbarClientLink
-            key={ key }
-            firstSegment={ firstSegment }
-            path={ key }
-          >
-            { label }
-          </NavbarClientLink>
-        ))
-    }
+      {NavbarItemsConfigs.map(({ key, label }) => (
+        <NavbarClientLink key={key} firstSegment={firstSegment} path={key}>
+          {label}
+        </NavbarClientLink>
+      ))}
 
       <NavbarClientLink
-        className={ cn("hidden", {
+        className={cn("hidden", {
           "sm:flex": isSignedIn,
-        }) }
-        firstSegment={ firstSegment }
+        })}
+        firstSegment={firstSegment}
         path="dashboard"
       >
         Dashboard
@@ -42,7 +38,6 @@ export default function NavbarLinks ({ isSignedIn }: Readonly<NavbarLinksProps>)
     </>
   );
 }
-
 
 interface NavbarItemClientProps extends ChildrenProps {
   path: string;
@@ -52,7 +47,7 @@ interface NavbarItemClientProps extends ChildrenProps {
 const LINK_CLASSNAMES =
   "flex text-lg transition-transform duration-200 ease-in-out transform hover:scale-105 text-primary";
 
-function NavbarClientLink ({
+function NavbarClientLink({
   path,
   children,
   className,
@@ -60,9 +55,9 @@ function NavbarClientLink ({
 }: Readonly<NavbarItemClientProps>) {
   // const isActive = firstSegment?.includes(path);
   return (
-    <NavigationMenuItem className={className }>
-      <Link className={ LINK_CLASSNAMES } href={ `/${path}` }>
-        { children }
+    <NavigationMenuItem className={className}>
+      <Link className={LINK_CLASSNAMES} href={`/${path}`}>
+        {children}
       </Link>
     </NavigationMenuItem>
   );

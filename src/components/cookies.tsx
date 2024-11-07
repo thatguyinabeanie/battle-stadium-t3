@@ -5,8 +5,9 @@ import Cookies from "js-cookie";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-
-const cookieAttributes = (attrs: Partial<Cookies.CookieAttributes>): Cookies.CookieAttributes => ({
+const cookieAttributes = (
+  attrs: Partial<Cookies.CookieAttributes>,
+): Cookies.CookieAttributes => ({
   expires: 7,
   sameSite: "strict",
   secure: true,
@@ -20,7 +21,10 @@ interface CookiesComponentProps {
   isSignedIn: boolean;
   userId: string | null | undefined;
 }
-export default function CookiesComponent({ isSignedIn, userId }: Readonly<CookiesComponentProps>) {
+export default function CookiesComponent({
+  isSignedIn,
+  userId,
+}: Readonly<CookiesComponentProps>) {
   const cookieConsent = Cookies.get(COOKIE_CONSENT);
   const [showConsent, setShowConsent] = useState(false);
 
@@ -74,10 +78,15 @@ export default function CookiesComponent({ isSignedIn, userId }: Readonly<Cookie
   if (!showConsent) return null;
 
   return (
-    <div aria-live="polite" className="fixed inset-x-0 bottom-0 px-[21px] pb-[26px] z-20" role="alert">
-      <div className="flex w-full items-center justify-between gap-x-20 rounded-large border border-divider bg-background/15 px-6 py-4 shadow-small backdrop-blur">
-        <p className="text-small font-normal text-default-700">
-          We use cookies to provide the best experience. By continuing to use our site, you agree to our&nbsp;
+    <div
+      aria-live="polite"
+      className="fixed inset-x-0 bottom-0 z-20 px-[21px] pb-[26px]"
+      role="alert"
+    >
+      <div className="rounded-large border-divider shadow-small flex w-full items-center justify-between gap-x-20 border bg-background/15 px-6 py-4 backdrop-blur">
+        <p className="text-small text-default-700 font-normal">
+          We use cookies to provide the best experience. By continuing to use
+          our site, you agree to our&nbsp;
           <Link className="font-normal" href="/tos/cookies">
             Cookie Policy.
           </Link>

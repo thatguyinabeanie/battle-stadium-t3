@@ -1,6 +1,7 @@
 import { type PokemonSet, type StatsTable } from "@pkmn/types";
 
-export interface OptionalStatsPokemonSet extends Omit<PokemonSet, "evs" | "ivs"> {
+export interface OptionalStatsPokemonSet
+  extends Omit<PokemonSet, "evs" | "ivs"> {
   evs?: Partial<StatsTable>;
   ivs?: Partial<StatsTable>;
 }
@@ -64,7 +65,10 @@ export function cleanImageUrl(url: string): string {
   return url ? `https://pokepast.es${url}` : "";
 }
 
-export function parseStats(statsLine: string, defaultValue?: number): StatsTable {
+export function parseStats(
+  statsLine: string,
+  defaultValue?: number,
+): StatsTable {
   const statsTable: Partial<StatsTable> = {};
 
   statsLine.split("/").forEach((stat) => {
@@ -78,7 +82,14 @@ export function parseStats(statsLine: string, defaultValue?: number): StatsTable
   });
 
   if (defaultValue !== undefined) {
-    const allStats: (keyof StatsTable)[] = ["hp", "atk", "def", "spa", "spd", "spe"];
+    const allStats: (keyof StatsTable)[] = [
+      "hp",
+      "atk",
+      "def",
+      "spa",
+      "spd",
+      "spe",
+    ];
 
     allStats.forEach((stat) => {
       if (statsTable[stat] === undefined) {
@@ -90,7 +101,9 @@ export function parseStats(statsLine: string, defaultValue?: number): StatsTable
   return statsTable as StatsTable;
 }
 
-export function convertToParsedPokemon(set: Partial<PokemonSet>): ParsedPokemon {
+export function convertToParsedPokemon(
+  set: Partial<PokemonSet>,
+): ParsedPokemon {
   return {
     name: set.name ?? "",
     species: set.species ?? "",

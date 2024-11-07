@@ -1,6 +1,9 @@
-import { InvalidPokemonAttributes, ParsedPokemon } from "~/lib/pokemon/common";
+import {
+  type InvalidPokemonAttributes,
+  type ParsedPokemon,
+} from "~/lib/pokemon/common";
 
-import { StatsTable } from "@pkmn/types";
+import { type StatsTable } from "@pkmn/types";
 import Image from "next/image";
 import { Card, CardHeader, CardFooter, CardContent } from "../ui/card";
 import Chip from "../ui/chip";
@@ -8,7 +11,7 @@ import Chip from "../ui/chip";
 const POKEMON_SIZE = 100;
 const ITEM_SIZE = 30;
 
-const formatStats = (stats?: Partial<StatsTable>, showAll: boolean = true) => {
+const formatStats = (stats?: Partial<StatsTable>, showAll = true) => {
   if (!stats) return "";
 
   return Object.entries(stats)
@@ -40,7 +43,7 @@ function PokemonName({ pokemon }: Readonly<PokemonCardProps>) {
 
 function PokemonAttributes({ pokemon, ots }: Readonly<PokemonCardProps>) {
   return (
-    <div className="flex flex-col text-sm p-2">
+    <div className="flex flex-col p-2 text-sm">
       <p>
         <strong>Ability:</strong> {pokemon.ability}
       </p>
@@ -55,7 +58,13 @@ function PokemonAttributes({ pokemon, ots }: Readonly<PokemonCardProps>) {
           <span className="flex flex-row justify-around">
             <strong>Item:</strong>
             {pokemon.item}
-            <Image priority alt={pokemon.item} height={ITEM_SIZE} src={pokemon.imgItem} width={ITEM_SIZE} />
+            <Image
+              priority
+              alt={pokemon.item}
+              height={ITEM_SIZE}
+              src={pokemon.imgItem}
+              width={ITEM_SIZE}
+            />
           </span>
         </p>
       </span>
@@ -74,30 +83,29 @@ function PokemonAttributes({ pokemon, ots }: Readonly<PokemonCardProps>) {
 }
 
 function PokemonMoveChip({ move }: Readonly<{ move: string }>) {
-  return (
-    <Chip    >
-      {move}
-    </Chip>
-  );
+  return <Chip>{move}</Chip>;
 }
 
 export function PokemonCard(props: Readonly<PokemonCardProps>) {
   const { pokemon, ots } = props;
 
   return (
-    <Card
-      className="h-[250px] w-[350px] justify-center bg-transparent backdrop-blur rounded-3xl border-small border-primary-700/50 pb-5"
-    >
-      <CardHeader className="flex justify-center items-center pt-4 pb-2">
+    <Card className="border-small border-primary-700/50 h-[250px] w-[350px] justify-center rounded-3xl bg-transparent pb-5 backdrop-blur">
+      <CardHeader className="flex items-center justify-center pb-2 pt-4">
         <PokemonName pokemon={pokemon} />
       </CardHeader>
-      <CardContent className="px-2 flex flex-row justify-center items-center overflow-hidden">
-        <Image alt={pokemon.species} height={POKEMON_SIZE} src={pokemon.imgPokemon} width={POKEMON_SIZE} />
+      <CardContent className="flex flex-row items-center justify-center overflow-hidden px-2">
+        <Image
+          alt={pokemon.species}
+          height={POKEMON_SIZE}
+          src={pokemon.imgPokemon}
+          width={POKEMON_SIZE}
+        />
         <PokemonAttributes ots={ots} pokemon={pokemon} />
       </CardContent>
 
-      <CardFooter className="p-4 w-full justify-center">
-        <div className="grid grid-cols-2 justify-center items-center gap-2">
+      <CardFooter className="w-full justify-center p-4">
+        <div className="grid grid-cols-2 items-center justify-center gap-2">
           {pokemon.moves.map((move) => (
             <PokemonMoveChip key={`${pokemon.species}.${move}`} move={move} />
           ))}

@@ -1,7 +1,12 @@
 "use client";
 import { useState, useCallback } from "react";
 
-import { type ParsedPokemon, type ParsedTeam, type PokePasteMetadata, type ValidatedPokemon } from "./common";
+import {
+  type ParsedPokemon,
+  type ParsedTeam,
+  type PokePasteMetadata,
+  type ValidatedPokemon,
+} from "./common";
 import { parseShowdownFormat } from "./parse-showdown-format";
 import { parsePokePasteHTML } from "./parse-pokepaste-html";
 
@@ -22,7 +27,9 @@ async function fetchAndParse(input: string): Promise<ParsedTeam> {
   }
 }
 
-async function validatePokemon(pokemon: ParsedPokemon): Promise<ValidatedPokemon> {
+async function validatePokemon(
+  pokemon: ParsedPokemon,
+): Promise<ValidatedPokemon> {
   const response = await fetch("/api/pokemon/team/validate", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -34,7 +41,9 @@ async function validatePokemon(pokemon: ParsedPokemon): Promise<ValidatedPokemon
 
 export function usePokemonTeam() {
   const [metaData, setMetaData] = useState<PokePasteMetadata | null>(null);
-  const [validatedTeam, setValidatedTeam] = useState<ValidatedPokemon[] | null>(null);
+  const [validatedTeam, setValidatedTeam] = useState<ValidatedPokemon[] | null>(
+    null,
+  );
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -46,11 +55,15 @@ export function usePokemonTeam() {
       const parsedData = await fetchAndParse(input);
 
       setMetaData(parsedData.metadata);
-      const validatedPokemon = await Promise.all(parsedData.pokemon.map(validatePokemon));
+      const validatedPokemon = await Promise.all(
+        parsedData.pokemon.map(validatePokemon),
+      );
 
       setValidatedTeam(validatedPokemon);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error("An unknown error occurred"));
+      setError(
+        err instanceof Error ? err : new Error("An unknown error occurred"),
+      );
     } finally {
       setLoading(false);
     }

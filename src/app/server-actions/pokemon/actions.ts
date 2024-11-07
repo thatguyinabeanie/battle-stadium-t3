@@ -2,7 +2,10 @@
 
 import { BattleStadiumApiClient, defaultConfig } from "~/lib/api";
 import { type paths } from "~/lib/api/openapi-v1";
-import { type ValidatedPokemon, type PokePasteMetadata } from "~/lib/pokemon/common";
+import {
+  type ValidatedPokemon,
+  type PokePasteMetadata,
+} from "~/lib/pokemon/common";
 import { type FetchOptions } from "openapi-fetch";
 
 type PostPokemonTeamBody = {
@@ -28,7 +31,9 @@ type PostPokemonTeamBody = {
   }[];
 };
 
-export async function getPokemonTeams(options?: FetchOptions<paths["/pokemon_teams"]["get"]>) {
+export async function getPokemonTeams(
+  options?: FetchOptions<paths["/pokemon_teams"]["get"]>,
+) {
   const pokemonOptions = {
     ...defaultConfig("getPokemonList"),
     ...options,
@@ -69,5 +74,8 @@ export async function postPokemonTeam(
     body,
   };
 
-  return (await BattleStadiumApiClient()).POST("/pokemon_teams", pokemonOptions);
+  return (await BattleStadiumApiClient()).POST(
+    "/pokemon_teams",
+    pokemonOptions,
+  );
 }

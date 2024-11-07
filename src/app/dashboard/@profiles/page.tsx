@@ -9,18 +9,16 @@ export default async function Profiles() {
     return null;
   }
 
-  const profiles = (await getProfilesByAccountId(me.id));
+  const profiles = await getProfilesByAccountId(me.id);
 
   return (
     <div>
       <NewProfile me={me} />
-      {
-        profiles.map((profile) => (
-          <div key={profile.id}>
-            <h3>{profile.username}</h3>
-          </div>
-        ))
-      }
+      {profiles.map((profile) => (
+        <div key={profile.id}>
+          <h3>{profile.username}</h3>
+        </div>
+      ))}
     </div>
   );
 }

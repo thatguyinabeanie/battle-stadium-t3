@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Battle Stadium",
-  description: "A modern tournament platform. Built by the community, for the community.",
+  description:
+    "A modern tournament platform. Built by the community, for the community.",
 };
 
 interface NavbarItemConfig {
@@ -28,7 +29,7 @@ export const NavbarItemsConfigs: NavbarItemConfig[] = [
   {
     key: "dashboard",
     label: "Dashboard",
-  }
-]
+  },
+];
 
 export type SiteConfig = typeof siteConfig;

@@ -46,7 +46,8 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     AUTH_SECRET: process.env.AUTH_SECRET,
     AUTH_DISCORD_ID: process.env.AUTH_DISCORD_ID,
     AUTH_DISCORD_SECRET: process.env.AUTH_DISCORD_SECRET,
@@ -78,6 +79,8 @@ export const env = createEnv({
   emptyStringAsUndefined: true,
 
   onInvalidAccess: (error) => {
-    throw new Error(`❌ Attempted to access a server-side environment variable on the client: ${error}`);
+    throw new Error(
+      `❌ Attempted to access a server-side environment variable on the client: ${error}`,
+    );
   },
 });

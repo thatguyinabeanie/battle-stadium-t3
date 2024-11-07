@@ -23,7 +23,9 @@ import { extractRouterConfig } from "uploadthing/server";
 import { UploadThingRouter } from "~/app/api/uploadthing/core";
 import { env } from "~/env.ts";
 import Navbar from "~/components/navbar/navbar";
-const AwesomeParticles = dynamic(() => import("~/components/awesome-particles"));
+const AwesomeParticles = dynamic(
+  () => import("~/components/awesome-particles"),
+);
 const Cookies = dynamic(() => import("~/components/cookies"));
 
 export const metadata: Metadata = {
@@ -47,7 +49,6 @@ export const viewport: Viewport = {
   ],
 };
 
-
 export default async function RootLayout({
   children,
 }: Readonly<ChildrenProps & AppProps>) {
@@ -56,54 +57,51 @@ export default async function RootLayout({
   return (
     <StrictMode>
       <ClerkProvider>
-      <html
-        // suppressHydrationWarning
-        lang="en"
-        className={`${GeistSans.variable}`}
-      >
-        <head />
+        <html
+          // suppressHydrationWarning
+          lang="en"
+          className={`${GeistSans.variable}`}
+        >
+          <head />
 
-        <body className="bg-background font-sans antialiased overflow-y-scroll">
-          <NextSSRPlugin routerConfig={ extractRouterConfig(UploadThingRouter) } />
-          <TRPCReactProvider>
+          <body className="overflow-y-scroll bg-background font-sans antialiased">
+            <NextSSRPlugin
+              routerConfig={extractRouterConfig(UploadThingRouter)}
+            />
+            <TRPCReactProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <div className="flex min-h-screen flex-col items-center">
+                  <AwesomeParticles />
 
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+                  <div className="flex min-h-screen w-5/6 flex-col items-center shadow-2xl backdrop-blur dark:shadow-white">
+                    <Navbar />
 
-              <div className="flex flex-col items-center min-h-screen ">
-                <AwesomeParticles />
+                    <main className="flex min-h-screen w-full flex-col items-center">
+                      <section className="z-0 flex w-full flex-col items-center gap-4">
+                        {children}
+                      </section>
+                    </main>
 
-                <div className="flex flex-col items-center min-h-screen backdrop-blur shadow-2xl dark:shadow-white w-5/6 ">
-                  <Navbar />
-
-                  <main className="flex flex-col min-h-screen items-center w-full">
-                    <section className="flex flex-col gap-4 w-full items-center z-0">
-                      { children }
-                    </section>
-                  </main>
-
-                  <Footer />
+                    <Footer />
+                  </div>
                 </div>
-              </div>
 
-                <Cookies isSignedIn={ !!sessionId } userId={ userId } />
+                <Cookies isSignedIn={!!sessionId} userId={userId} />
 
                 <VercelAnalytics />
 
-                { env.VERCEL_ENV === "production" && <VercelSpeedInsights /> }
+                {env.VERCEL_ENV === "production" && <VercelSpeedInsights />}
 
-                <GoogleAnalytics gaId={ env.MEASUREMENT_ID ?? "" } />
-
-            </ThemeProvider>
-          </TRPCReactProvider>
-        </body>
-
-
-      </html>
+                <GoogleAnalytics gaId={env.MEASUREMENT_ID ?? ""} />
+              </ThemeProvider>
+            </TRPCReactProvider>
+          </body>
+        </html>
       </ClerkProvider>
     </StrictMode>
   );

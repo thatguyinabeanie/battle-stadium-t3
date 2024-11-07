@@ -1,4 +1,7 @@
-import { getTournament, getTournaments } from "~/app/server-actions/tournaments/actions";
+import {
+  getTournament,
+  getTournaments,
+} from "~/app/server-actions/tournaments/actions";
 
 import OrganizationHeader from "~/components/organizations/organization-header";
 import { type OrganizationTournamentProps } from "~/types";
@@ -9,7 +12,9 @@ import Chip from "~/components/ui/chip";
 export const revalidate = 300;
 export const dynamicParams = true;
 
-export async function generateMetadata(props: Readonly<OrganizationTournamentProps>) {
+export async function generateMetadata(
+  props: Readonly<OrganizationTournamentProps>,
+) {
   const params = await props.params;
   const tournament = (await getTournament(params.tournament_id)).data;
 
@@ -19,10 +24,15 @@ export async function generateMetadata(props: Readonly<OrganizationTournamentPro
 export async function generateStaticParams() {
   const tournaments = (await getTournaments()).data?.data ?? [];
 
-  return tournaments.map(({ organization, id }) => ({ org_slug: organization.slug, tournament_id: id.toString() }));
+  return tournaments.map(({ organization, id }) => ({
+    org_slug: organization.slug,
+    tournament_id: id.toString(),
+  }));
 }
 
-export default async function OrganizationTournament(props: Readonly<OrganizationTournamentProps>) {
+export default async function OrganizationTournament(
+  props: Readonly<OrganizationTournamentProps>,
+) {
   const params = await props.params;
   const { org_slug, tournament_id } = params;
   const tournament = (await getTournament(tournament_id)).data;
@@ -35,10 +45,9 @@ export default async function OrganizationTournament(props: Readonly<Organizatio
 
   return (
     <>
-
       <div className="pt-2" />
       <OrganizationHeader organization={organization}>
-        <div className="flex flex-col justify-between items-center text-center mx-4 h-full">
+        <div className="mx-4 flex h-full flex-col items-center justify-between text-center">
           <h1 className="text-2xl font-semibold">{tournament.name}</h1>
           <h2 className="flex flex-row gap-1">
             <p className="font-bold">Presented By: </p>
@@ -56,7 +65,10 @@ export default async function OrganizationTournament(props: Readonly<Organizatio
 
         <div className="pt-2" />
 
-        <TournamentDetailChips org_slug={org_slug} tournament_id={tournament_id} />
+        <TournamentDetailChips
+          org_slug={org_slug}
+          tournament_id={tournament_id}
+        />
       </OrganizationHeader>
 
       <div className="pt-2" />
@@ -77,23 +89,15 @@ function TournamentDetailChips(props: Readonly<TournamentDetailChipsProps>) {
   const { org_slug, tournament_id } = props;
 
   return (
-    <div className="flex flex-row gap-1 w-full justify-center items-center">
-      <Chip variant="solid">
-        Solid
-      </Chip>
-      <Chip variant="bordered">
-        Bordered
-      </Chip>
-      <Chip variant="light">
-        Light
-      </Chip>
-      <Chip variant="flat">
-        Flat
-      </Chip>
-      <Link href={ `/organizations/${org_slug}/tournaments/${tournament_id}/register` }>
-        <Chip>
-          Register
-        </Chip>
+    <div className="flex w-full flex-row items-center justify-center gap-1">
+      <Chip variant="solid">Solid</Chip>
+      <Chip variant="bordered">Bordered</Chip>
+      <Chip variant="light">Light</Chip>
+      <Chip variant="flat">Flat</Chip>
+      <Link
+        href={`/organizations/${org_slug}/tournaments/${tournament_id}/register`}
+      >
+        <Chip>Register</Chip>
       </Link>
     </div>
   );

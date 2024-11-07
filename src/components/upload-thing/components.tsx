@@ -1,6 +1,9 @@
 "use client";
 
-import { generateUploadButton, generateUploadDropzone } from "@uploadthing/react";
+import {
+  generateUploadButton,
+  generateUploadDropzone,
+} from "@uploadthing/react";
 
 import type { UploadThingFileRouter } from "~/app/api/uploadthing/core";
 

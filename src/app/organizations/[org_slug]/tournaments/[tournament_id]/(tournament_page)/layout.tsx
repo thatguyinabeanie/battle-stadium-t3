@@ -44,7 +44,7 @@ export default function OrganizationTournamentsTournamentLayout(
   props: Readonly<OrganizationTournamentsTournamentLayoutProps>,
 ) {
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div className="flex h-full w-full flex-col items-center">
       {props.children}
 
       <div className="py-2" />

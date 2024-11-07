@@ -1,7 +1,14 @@
-import { type ParsedTeam, type PokePasteMetadata, type ParsedPokemon, cleanImageUrl, parseStats } from "./common";
+import {
+  type ParsedTeam,
+  type PokePasteMetadata,
+  type ParsedPokemon,
+  cleanImageUrl,
+  parseStats,
+} from "./common";
 
 export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
-  if (typeof window === "undefined") return { metadata: { title: "", author: "", format: "" }, pokemon: [] };
+  if (typeof window === "undefined")
+    return { metadata: { title: "", author: "", format: "" }, pokemon: [] };
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, "text/html");
@@ -16,7 +23,9 @@ export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
         ?.querySelector("h2")
         ?.textContent?.trim()
         .replace(/^\s*by\s*/, "") ?? "",
-    format: aside?.querySelector("p")?.textContent?.replace("Format:", "").trim() ?? "",
+    format:
+      aside?.querySelector("p")?.textContent?.replace("Format:", "").trim() ??
+      "",
   };
 
   const articles = doc.querySelectorAll("article");
@@ -42,7 +51,8 @@ export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
     };
 
     if (lines.length > 0) {
-      const { name, species, item, gender, remainingDetails } = parseNameSpeciesItem(lines[0] ?? "");
+      const { name, species, item, gender, remainingDetails } =
+        parseNameSpeciesItem(lines[0] ?? "");
 
       currentPokemon.name = name;
       currentPokemon.species = species;
@@ -56,13 +66,18 @@ export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
         if (line.startsWith("Ability:")) {
           currentPokemon.ability = line.split(":")[1]?.trim() ?? "";
         } else if (line.startsWith("Level:")) {
-          currentPokemon.level = parseInt(line.split(":")[1]?.trim() ?? "100", 10);
+          currentPokemon.level = parseInt(
+            line.split(":")[1]?.trim() ?? "100",
+            10,
+          );
         } else if (line.startsWith("Tera Type:")) {
           currentPokemon.teraType = line.split(":")[1]?.trim() ?? "";
         } else if (line.startsWith("EVs:")) {
-          currentPokemon.evs = parseStats(line.split(":")[1]?.trim() ?? "") ?? currentPokemon.evs;
+          currentPokemon.evs =
+            parseStats(line.split(":")[1]?.trim() ?? "") ?? currentPokemon.evs;
         } else if (line.startsWith("IVs:")) {
-          currentPokemon.ivs = parseStats(line.split(":")[1]?.trim() ?? "") ?? currentPokemon.ivs;
+          currentPokemon.ivs =
+            parseStats(line.split(":")[1]?.trim() ?? "") ?? currentPokemon.ivs;
         } else if (line.includes("Nature")) {
           currentPokemon.nature = line.split(" ")[0] ?? "";
         } else if (line.startsWith("-")) {
@@ -72,8 +87,10 @@ export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
     }
 
     const imgDiv = article.querySelector("div");
-    const imgPokemonSrc = imgDiv?.querySelector("img")?.getAttribute("src") ?? "";
-    const imgItemSrc = imgDiv?.querySelectorAll("img")[1]?.getAttribute("src") ?? "";
+    const imgPokemonSrc =
+      imgDiv?.querySelector("img")?.getAttribute("src") ?? "";
+    const imgItemSrc =
+      imgDiv?.querySelectorAll("img")[1]?.getAttribute("src") ?? "";
 
     currentPokemon.imgPokemon = cleanImageUrl(imgPokemonSrc);
     currentPokemon.imgItem = cleanImageUrl(imgItemSrc);
@@ -130,7 +147,13 @@ function parseNameSpeciesItem(line: string): {
   const [item, ...remainingDetailsArray] = itemAndRest.split("\n");
   const remainingDetails = remainingDetailsArray.join("\n").trim();
 
-  const obj = { name, species, item: item?.trim() ?? "", gender, remainingDetails };
+  const obj = {
+    name,
+    species,
+    item: item?.trim() ?? "",
+    gender,
+    remainingDetails,
+  };
 
   console.log("Parsed result:", obj); // eslint-disable-line no-console
 

@@ -1,6 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import { postPokemonTeam } from "~/app/server-actions/pokemon/actions";
-import { ValidatedPokemon, PokePasteMetadata } from "~/lib/pokemon/common";
+import {
+  type ValidatedPokemon,
+  type PokePasteMetadata,
+} from "~/lib/pokemon/common";
 
 import Form from "next/form";
 import { Button } from "../ui/button";
@@ -24,7 +27,9 @@ export function PokemonShowdownSetForm({
   return (
     <Form action={handleSubmit} className="grid grid-cols-1">
       <div className="mb-4">
-        <h1 className="text-2xl font-bold justify-center items-center flex">{"Showdown Set"}</h1>
+        <h1 className="flex items-center justify-center text-2xl font-bold">
+          {"Showdown Set"}
+        </h1>
       </div>
       <Textarea
         name="pokepaste"
@@ -33,14 +38,18 @@ export function PokemonShowdownSetForm({
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <div className="flex flex-row justify-center items-center gap-4 pt-2">
+      <div className="flex flex-row items-center justify-center gap-4 pt-2">
         <Button color="primary" type="submit">
           Load Team
         </Button>
         <Button
           color="primary"
           disabled={!validatedTeam || !metaData}
-          onClick={() => validatedTeam && metaData && postPokemonTeam(validatedTeam, metaData)}
+          onClick={() =>
+            validatedTeam &&
+            metaData &&
+            postPokemonTeam(validatedTeam, metaData)
+          }
         >
           Upload
         </Button>

@@ -8,7 +8,10 @@ interface TournamentRegisterProps {
   tournament_id: number;
 }
 
-export default async function TournamentRegistration({ org_slug, tournament_id }: Readonly<TournamentRegisterProps>) {
+export default async function TournamentRegistration({
+  org_slug,
+  tournament_id,
+}: Readonly<TournamentRegisterProps>) {
   const me = (await getAccountMe())?.data;
 
   if (!me) {
@@ -17,5 +20,11 @@ export default async function TournamentRegistration({ org_slug, tournament_id }
 
   const profiles = await getProfilesByAccountId(me?.id);
 
-  return <RegistrationCard org_slug={org_slug} profiles={profiles} tournament_id={tournament_id} />;
+  return (
+    <RegistrationCard
+      org_slug={org_slug}
+      profiles={profiles}
+      tournament_id={tournament_id}
+    />
+  );
 }
