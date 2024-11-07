@@ -19,7 +19,9 @@ export default async function OrganizationsPage() {
 
       <PartneredOrganizations />
 
-      {/* <NextUiTable /> */}
+      <div>
+        <h2>TODO: Organizations Table</h2>
+      </div>
     </>
   );
 }
