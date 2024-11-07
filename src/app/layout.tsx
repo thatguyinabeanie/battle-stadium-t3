@@ -22,7 +22,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { UploadThingRouter } from "~/app/api/uploadthing/core";
 import { env } from "~/env.ts";
-import Navbar from "~/components/navbar/navbar";
+import Navbar from "~/components/navbar/navbar-claude";
 const AwesomeParticles = dynamic(
   () => import("~/components/awesome-particles"),
 );
