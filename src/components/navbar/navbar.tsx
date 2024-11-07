@@ -8,6 +8,7 @@ export default async function Navbar() {
   const clerkAuth = await auth();
   const me = (await getAccountMe())?.data;
 
+  console.log('me', me?.id); // eslint-disable-line no-console
   return (
     <NavigationMenu>
       <NavigationMenuList className="space-x-6">

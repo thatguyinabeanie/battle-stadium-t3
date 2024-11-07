@@ -5,14 +5,14 @@ import { type ReactNode } from "react";
 // import Tabs from "~/components/nextui/tabs";
 
 
-const tabs = [
-  { key: "details", title: "Details" },
-  { key: "registrations", title: "Registrations" },
-  { key: "pairings", title: "Pairings" },
-  { key: "standings", title: "Standings" },
-  { key: "matches", title: "Matches" },
-  { key: "meta", title: "Metagame" },
-];
+// const tabs = [
+//   { key: "details", title: "Details" },
+//   { key: "registrations", title: "Registrations" },
+//   { key: "pairings", title: "Pairings" },
+//   { key: "standings", title: "Standings" },
+//   { key: "matches", title: "Matches" },
+//   { key: "meta", title: "Metagame" },
+// ];
 
 interface OrganizationTournamentsTournamentLayoutProps {
   children: ReactNode;
@@ -24,24 +24,24 @@ interface OrganizationTournamentsTournamentLayoutProps {
   details: ReactNode;
 }
 
-function renderTabContent(activeTab: string, props: Readonly<OrganizationTournamentsTournamentLayoutProps>) {
-  switch (activeTab) {
-    case "details":
-      return props.details;
-    case "registrations":
-      return props.registrations;
-    case "pairings":
-      return props.pairings;
-    case "standings":
-      return props.standings;
-    case "matches":
-      return props.matches;
-    case "meta":
-      return props.metagame;
-    default:
-      return null;
-  }
-}
+// function renderTabContent(activeTab: string, props: Readonly<OrganizationTournamentsTournamentLayoutProps>) {
+//   switch (activeTab) {
+//     case "details":
+//       return props.details;
+//     case "registrations":
+//       return props.registrations;
+//     case "pairings":
+//       return props.pairings;
+//     case "standings":
+//       return props.standings;
+//     case "matches":
+//       return props.matches;
+//     case "meta":
+//       return props.metagame;
+//     default:
+//       return null;
+//   }
+// }
 
 export default function OrganizationTournamentsTournamentLayout(
   props: Readonly<OrganizationTournamentsTournamentLayoutProps>,

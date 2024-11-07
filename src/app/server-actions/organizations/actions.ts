@@ -10,8 +10,8 @@ export async function getOrganizations(options?: FetchOptions<paths["/organizati
     ...options,
     params: {
       query: {
-        page: (options?.params?.query?.page!) || 0,
-        per_page: (options?.params?.query?.per_page!) || 20,
+        page: options?.params?.query?.page ?? 0,
+        per_page: options?.params?.query?.per_page ?? 20,
       },
     },
   };
@@ -19,8 +19,8 @@ export async function getOrganizations(options?: FetchOptions<paths["/organizati
 
   const resp = await (await BattleStadiumApiClient(skipClerkAuth)).GET("/organizations", organizationsOptions);
   const allOrgs = resp.data?.data;
-  const partnerOrgs = (allOrgs || [])?.filter((org) => org.partner);
-  const nonPartnerOrgs = (allOrgs || [])?.filter((org) => !org.partner);
+  const partnerOrgs = (allOrgs ?? [])?.filter((org) => org.partner);
+  const nonPartnerOrgs = (allOrgs ?? [])?.filter((org) => !org.partner);
 
   return {
     partners: partnerOrgs,

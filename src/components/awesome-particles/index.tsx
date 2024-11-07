@@ -11,7 +11,7 @@ export default function AwesomeParticles () {
   const options = useParticleOptions();
 
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
+    void initParticlesEngine(async (engine) => {
       return await loadSlim(engine);
     }).then(() => setInit(true));
   }, []);

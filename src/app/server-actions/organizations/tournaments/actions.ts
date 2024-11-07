@@ -17,5 +17,6 @@ export async function getOrganizationTournaments(
     },
   };
 
-  return (await BattleStadiumApiClient()).GET("/organizations/{slug}/tournaments", organizationTournamentsOptions);
+  const tours = (await (await BattleStadiumApiClient()).GET("/organizations/{slug}/tournaments", organizationTournamentsOptions)).data ?? [];
+  return tours;
 }

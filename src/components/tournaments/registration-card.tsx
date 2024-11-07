@@ -4,7 +4,6 @@ import { postTournamentRegistration } from "~/app/server-actions/tournaments/act
 import Form from "next/form";
 import ProfilesAutocomplete from "./profiles-autocomplete";
 import { Input } from "../ui/input";
-import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 
 interface RegistrationCardProps {

@@ -14,7 +14,9 @@ export const UploadThingRouter = {
       const { userId } = await auth();
 
       // If you throw, the user will not be able to upload
-      if (!userId) throw new UploadThingError("Unauthorized");
+      if (!userId) {
+        throw new UploadThingError("Unauthorized");
+      }
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId };

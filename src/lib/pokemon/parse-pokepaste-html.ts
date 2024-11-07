@@ -9,7 +9,7 @@ export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
   // Parse metadata (unchanged)
   const aside = doc.querySelector("aside");
   const metadata: PokePasteMetadata = {
-    id: url.split("https://pokepast.es/")[1] || "",
+    id: url.split("https://pokepast.es/")[1] ?? "",
     title: aside?.querySelector("h1")?.textContent?.trim() ?? "",
     author:
       aside
@@ -60,11 +60,11 @@ export function parsePokePasteHTML(html: string, url: string): ParsedTeam {
         } else if (line.startsWith("Tera Type:")) {
           currentPokemon.teraType = line.split(":")[1]?.trim() ?? "";
         } else if (line.startsWith("EVs:")) {
-          currentPokemon.evs = parseStats(line.split(":")[1]?.trim() ?? "") || currentPokemon.evs;
+          currentPokemon.evs = parseStats(line.split(":")[1]?.trim() ?? "") ?? currentPokemon.evs;
         } else if (line.startsWith("IVs:")) {
-          currentPokemon.ivs = parseStats(line.split(":")[1]?.trim() ?? "") || currentPokemon.ivs;
+          currentPokemon.ivs = parseStats(line.split(":")[1]?.trim() ?? "") ?? currentPokemon.ivs;
         } else if (line.includes("Nature")) {
-          currentPokemon.nature = line.split(" ")[0] || "";
+          currentPokemon.nature = line.split(" ")[0] ?? "";
         } else if (line.startsWith("-")) {
           currentPokemon.moves.push(line.substring(1).trim());
         }
@@ -106,7 +106,7 @@ function parseNameSpeciesItem(line: string): {
   // Handle gender separately
   let gender: string | undefined;
 
-  if (nameSpeciesLet.endsWith(" (M)") || nameSpeciesLet.endsWith(" (F)")) {
+  if (nameSpeciesLet.endsWith(" (M)") ?? nameSpeciesLet.endsWith(" (F)")) {
     gender = nameSpeciesLet.slice(-2, -1);
     nameSpeciesLet = nameSpeciesLet.slice(0, -4);
   }
@@ -130,7 +130,7 @@ function parseNameSpeciesItem(line: string): {
   const [item, ...remainingDetailsArray] = itemAndRest.split("\n");
   const remainingDetails = remainingDetailsArray.join("\n").trim();
 
-  const obj = { name, species, item: item?.trim() || "", gender, remainingDetails };
+  const obj = { name, species, item: item?.trim() ?? "", gender, remainingDetails };
 
   console.log("Parsed result:", obj); // eslint-disable-line no-console
 

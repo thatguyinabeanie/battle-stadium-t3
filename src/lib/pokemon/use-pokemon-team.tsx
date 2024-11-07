@@ -56,10 +56,10 @@ export function usePokemonTeam() {
     }
   }, []);
 
-  const handleSubmit = (formData: FormData) => {
+  const handleSubmit = async (formData: FormData) => {
     const inputUrl = formData.get("pokepaste") as string;
 
-    parseInput(inputUrl);
+    await parseInput(inputUrl);
   };
 
   return { validatedTeam, metaData, loading, error, handleSubmit };

@@ -88,24 +88,4 @@ const Chip = React.forwardRef<HTMLDivElement, ChipProps>(({
 
 Chip.displayName = "Chip";
 
-// Demo component to show usage with type safety
-const ChipDemo = (): JSX.Element => {
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    alert('Closed!');
-  };
-
-  return (
-    <div className="flex flex-wrap gap-4 p-4">
-      <Chip>Default</Chip>
-      <Chip variant="bordered">Bordered</Chip>
-      <Chip variant="light">Light</Chip>
-      <Chip variant="flat">Flat</Chip>
-      <Chip size="sm">Small</Chip>
-      <Chip onClose={ handleClose }>Closable</Chip>
-      <Chip radius="sm">Square-ish</Chip>
-      <Chip className="bg-blue-500">Custom Color</Chip>
-    </div>
-  );
-};
-
 export default Chip;

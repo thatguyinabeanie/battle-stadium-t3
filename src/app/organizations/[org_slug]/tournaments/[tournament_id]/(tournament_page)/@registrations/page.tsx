@@ -2,16 +2,16 @@
 import { getTournamentPlayers } from "~/app/server-actions/tournaments/actions";
 import { type OrganizationTournamentProps } from "~/types";
 
-const columns = [
-  {
-    key: "username",
-    label: "Username",
-  },
-  {
-    key: "pronouns",
-    label: "Pronouns",
-  },
-];
+// const columns = [
+//   {
+//     key: "username",
+//     label: "Username",
+//   },
+//   {
+//     key: "pronouns",
+//     label: "Pronouns",
+//   },
+// ];
 
 export default async function TournamentRegistrations(props: Readonly<OrganizationTournamentProps>) {
   const params = await props.params;

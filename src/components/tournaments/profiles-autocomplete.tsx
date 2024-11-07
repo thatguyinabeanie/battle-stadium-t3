@@ -9,6 +9,7 @@ interface ProfilesAutocompleteProps {
 }
 
 export default function ProfilesAutocomplete({ profiles }: Readonly<ProfilesAutocompleteProps>) {
+  console.log('profiles', profiles);  // eslint-disable-line no-console
   return (
     <div>
       <Input type="text" list="profiles" placeholder="Select profile" />

@@ -24,33 +24,33 @@ export async function generateStaticParams() {
   return [...partners, ...nonpartners].map(({ slug }) => ({ org_slug: slug }));
 }
 
-const columns = [
-  {
-    key: "start_at",
-    label: "DATE",
-  },
-  {
-    key: "name",
-    label: "NAME",
-  },
+// const columns = [
+//   {
+//     key: "start_at",
+//     label: "DATE",
+//   },
+//   {
+//     key: "name",
+//     label: "NAME",
+//   },
 
-  {
-    key: "players",
-    label: "PLAYERS",
-  },
-  {
-    key: "registration",
-    label: "REGISTRATION",
-  },
-  {
-    key: "game",
-    label: "GAME",
-  },
-  {
-    key: "format",
-    label: "FORMAT",
-  },
-];
+//   {
+//     key: "players",
+//     label: "PLAYERS",
+//   },
+//   {
+//     key: "registration",
+//     label: "REGISTRATION",
+//   },
+//   {
+//     key: "game",
+//     label: "GAME",
+//   },
+//   {
+//     key: "format",
+//     label: "FORMAT",
+//   },
+// ];
 
 export default async function OrganizationDetailPage(props: Readonly<OrganizationDetailPageProps>) {
   const params = await props.params;
@@ -60,7 +60,7 @@ export default async function OrganizationDetailPage(props: Readonly<Organizatio
     return <div>404 - Not Found</div>;
   }
 
-  const { data: tournaments } = await getOrganizationTournaments(params.org_slug);
+  const tournaments = await getOrganizationTournaments(params.org_slug);
 
   return (
     <>
@@ -71,6 +71,17 @@ export default async function OrganizationDetailPage(props: Readonly<Organizatio
         </div>
       </OrganizationHeader>
 
+      <div>
+        <h2>TODO: tournament table</h2>
+        {
+          tournaments.map((tournament) => (
+            <div key={tournament.id}>
+              <h3>{tournament.name}</h3>
+              <p>{tournament.start_at}</p>
+            </div>
+          ))
+        }
+      </div>
       {/* <Divider /> */}
 
       {/* <TournamentsTable columns={columns} data={tournaments} /> */}

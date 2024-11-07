@@ -6,8 +6,6 @@ export default function Settings() {
 
   return (
     <div className="w-full max-w-2xl flex-col p-10 rounded-3xl backdrop-blur border-small border-opacity-15 border-neutral-400">
-
-
       <Tabs>
         <TabsList>
           <TabsTrigger value="account" title="Account">Account</TabsTrigger>
@@ -16,7 +14,7 @@ export default function Settings() {
         </TabsList>
 
         <TabsContent value="account">Make changes to your account here.</TabsContent>
-        <TabsContent value="appearance">Make changes to the site's appearance here.</TabsContent>
+        <TabsContent value="appearance">{"Make changes to the site's appearance here."}</TabsContent>
       </Tabs>
     </div>
   );

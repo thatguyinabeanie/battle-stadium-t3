@@ -52,7 +52,7 @@ export default function CookiesComponent({ isSignedIn, userId }: Readonly<Cookie
       const userIdCookie = Cookies.get("userId");
 
       if (!userIdCookie || userIdCookie.split(".")[0] !== userId) {
-        callApiToSetUserId(userId);
+        void callApiToSetUserId(userId);
       }
     }
   }, [isSignedIn, cookieConsent, userId]);

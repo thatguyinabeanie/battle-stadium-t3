@@ -62,7 +62,7 @@ export default async function OrganizationTournament(props: Readonly<Organizatio
       <div className="pt-2" />
       {/* <Divider /> */}
       <div>
-        <h2>TODO: "Divider" component</h2>
+        <h2>TODO: Divider component</h2>
       </div>
       <div className="pt-2" />
     </>
