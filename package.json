@@ -95,6 +95,7 @@
     "recharts": "^2.13.3",
     "server-only": "^0.0.1",
     "shadcn": "^2.1.6",
+    "sonner": "^1.7.0",
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.5.4",
     "tailwind-variants": "^0.2.1",
